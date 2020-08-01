@@ -1,3 +1,5 @@
+import sys
+
 TAM_MAX_CLAVE = 26
 
 def menuPrincipal():
@@ -51,19 +53,13 @@ def traducirMensaje(opcion, mensaje, clave):
 
 
 def main():
- while True:
-  opcion = menuPrincipal()
-  if opcion == 'x':
-   break
-  mensaje = obtenerMensaje()
-  if opcion == 'c':
-   print('Tu texto traducido es:')
-   for clave in range(1, TAM_MAX_CLAVE):
-    print(clave, traducirMensaje(opcion, mensaje, clave));
-  else:
-   clave = obtenerClave()
-   print('Tu texto traducido es:')
-   print(traducirMensaje(opcion, mensaje, clave));
+    if(sys.argv[1] == "help"):
+        print("\tBienvenido al encriptador de Cesar\n\nPara correr un comando solo necesita poner la clave antes qu el texto entre comillas dobles, ejemplo:")
+        print(">python3 ce.py 3 \"meet me after the toga party\"")
+        print("\nEl resultado de encriptacion es: phhw ph diwhu wkh wrjd sduwb")
+    else:
+        print(traducirMensaje('c', sys.argv[2], int(sys.argv[1])));
+
 
 if __name__ == "__main__":
  main()
